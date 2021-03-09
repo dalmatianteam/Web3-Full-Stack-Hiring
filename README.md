@@ -19,6 +19,20 @@ We don't have strong preferences on the styling -- if you are familiar with Boot
 
 Note that Dai does have an [official library](https://www.npmjs.com/package/@makerdao/dai), but we want you to use web3 directly since that is what you'll use if you work at Syndicate. You can feel free to look at the official library for inspiration, but you should not use it to complete the project.
 
+### Primary Task and Optional Additional Tasks
+
+As discussed above, your **primary task** is to produce an interface that has:
+
+- An input bar where a user can enter in an Ethereum address
+- A display that shows the DAI balance for the entered Ethereum address. This should be displayed in US Dollars, not `wei`. This is described in more detail in the Helpful Resources section below.
+
+If you have extra time available, feel free to show off your strengths! You can style the site, cache the most recent input, or implement any of the following features:
+
+- Displaying the value of DAI in alternative currencies (e.g. the value of DAI when the 1 DAI = $1 US Dollar representation is converted to Euros)
+- Querying USDC in addition to DAI (You would use the erc20.js ABI and the USDC contract addresses found in Dai-Web3-Example.js). This is harder because USDC uses six decimals while DAI uses 18. Decimals are described in more detail in the Helpful Resources section below.
+
+There is no need to complete any of these additional tasks, but you're always welcome to do so if you want to highlight an area of expertise.
+
 ## Helpful Resources
 
 To query the Ethereum blockchain for the DAI balance, you will want to use [web3.js](https://web3js.readthedocs.io/en/v1.3.4/getting-started.html) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) for it. You will need a gateway to access the Ethereum blockchain (Dai refers to this as a provider and has examples [here](https://web3js.readthedocs.io/en/v1.3.4/include_package-core.html?highlight=givenProvider#example)). You can use any of the following gateways:
@@ -33,17 +47,3 @@ The DAI code is hosted by a smart contract located [here](https://etherscan.io/a
 We know this can be complicated, so we have already put together a complete example of this process using the tests for our [Solidity Hiring Test](https://github.com/SyndicateProtocol/Bank-Solidity-Hiring) as a reference. [Lines 11 - 20](https://github.com/SyndicateProtocol/Bank-Solidity-Hiring/blob/main/test/Bank.js#L11) as well as line 8 show a complete example of this process. These lines include all of the steps to query a web3 contract. We've copied this file to the repository and renamed it to `Dai-Web3-Example.js`. The abi files referenced are in the `abi/` directory.
 
 When you query the contract, you'll note that the value of the balance in the DAI contract is a lot higher than the balance listed on Etherscan. This is because the DAI contract is represented [in 18 decimals](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals) known as `wei`. You'll want to [convert from wei to ether](https://web3js.readthedocs.io/en/v1.3.4/web3-utils.html#fromwei) to get the proper units.
-
-### Primary Task and Optional Additional Tasks
-
-As discussed above, your **primary task** is to produce an interface that has:
-
-- An input bar where a user can enter in an Ethereum address
-- A display that shows the DAI balance for the entered Ethereum address. This should be displayed in US Dollars, not `wei`.
-
-If you have extra time available, feel free to show off your strengths! You can style the site, cache the most recent input, or implement any of the following features:
-
-- Querying USDC in addition to DAI (You would use the erc20.js ABI and the USDC contract addresses found in Dai-Web3-Example.js). This is harder because USDC uses six decimals while DAI uses 18.
-- Displaying the value of DAI in alternative currencies (e.g. the value of DAI when the 1 DAI = $1 US Dollar representation is converted to Euros)
-
-There is no need to complete any of these additional tasks, but you're always welcome to do so if you want to highlight an area of expertise.
