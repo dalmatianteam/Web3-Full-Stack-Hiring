@@ -1,33 +1,32 @@
 # Web3-Full-Stack-Hiring
 
-Syndicate's hiring test for Full-Stack Engineers
-
 Hello! If you're reading this, you applied to a Full Stack Engineering role at Syndicate. This is Syndicate's hiring test for Full Stack engineers. (Note: If you have not applied but stumbled across this repository somehow, you are welcome to check out our [job postings](https://www.notion.so/Syndicate-Protocol-Job-Postings-0441e77193a34207b4c86dc7c680b5d8).)
 
 When you fork this repository, you should make your fork **private** and share it with [wpapper](https://github.com/wpapper) on Github with an admin role. By forking this repository, you agree to keep the MIT License intact and assign the MIT License to your fork as well.
 
-### Project Description
+## Project Description
 
 In this repository, you will create a Web3 integration to look up balances in a smart contract known as Dai. Don't worry if you haven't worked with Web3 before, we'll have plenty of examples and guidance!
 
-[Dai](https://community-development.makerdao.com/en/faqs/dai/) is a cryptocurrency known as a stablecoin. This means that the value of Dai fluctuates very little. In this case, you can assume that 1 DAI is always equal to 1 US Dollar. Various wallets hold balances of DAI. For example, [this wallet](https://etherscan.io/address/0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8) is owned by an exchange and currently holds 28,837,952 DAI (which, for the purposes of this exercise, we can assume is $28,837,952 US Dollars).
+[Dai](https://community-development.makerdao.com/en/faqs/dai/) is a cryptocurrency known as a stablecoin. It's useful for buying goods and services on cryptocurrency networks -- you use it just like you'd use regular money. Because Dai is a stablecoin, the value of Dai fluctuates very little. In this case, you can assume that 1 DAI is always equal to 1 US Dollar. Various wallets hold balances of DAI. For example, [this wallet](https://etherscan.io/address/0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8) is owned by an exchange and as of writing holds 28,837,952 DAI (which, for the purposes of this exercise, we can assume is $28,837,952 US Dollars).
 
 Your task is to use React, [the web3.js library](https://web3js.readthedocs.io/en/v1.3.4/) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) of your choosing, and some form of styling (we use Tailwind internally, but we understand that you might not have used it before) to create an interface that can query a user's DAI balance on the Ethereum blockchain. Your interface should have:
 
 - An input bar where a user can enter in an Ethereum address
 - A display that shows the DAI balance for the entered Ethereum address
 
-We don't have strong preferences on the styling -- if you are familiar with Bootstrap, Tailwind, or various Gatsby starters, feel free to use those. If you don't have familiarity with existing templates, minimal styling is perfectly fine as well.
+We don't have strong preferences on the styling -- if you are familiar with Bootstrap, Tailwind, or various Gatsby starters, feel free to use those. If you don't have familiarity with existing styling or templates, minimal styling is perfectly fine as well.
 
-Note that DAI does have an [official library](https://www.npmjs.com/package/@makerdao/dai), but we want you to use web3 directly since that is what you'll use if you work at Syndicate. You can feel free to look at the official library for inspiration, but you should not use it to complete the project.
+Note that Dai does have an [official library](https://www.npmjs.com/package/@makerdao/dai), but we want you to use web3 directly since that is what you'll use if you work at Syndicate. You can feel free to look at the official library for inspiration, but you should not use it to complete the project.
 
-### Helpful Resources
+## Helpful Resources
 
-To query the Ethereum blockchain for the DAI balance, you will want to use [web3.js](https://web3js.readthedocs.io/en/v1.3.4/getting-started.html) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) for it. You will need a gateway to access the Ethereum blockchain. You can use any of the following gateways:
+To query the Ethereum blockchain for the DAI balance, you will want to use [web3.js](https://web3js.readthedocs.io/en/v1.3.4/getting-started.html) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) for it. You will need a gateway to access the Ethereum blockchain (Dai refers to this as a provider and has examples [here](https://web3js.readthedocs.io/en/v1.3.4/include_package-core.html?highlight=givenProvider#example)). You can use any of the following gateways:
 
 - The [Cloudflare Ethereum Gateway](https://developers.cloudflare.com/distributed-web/ethereum-gateway/interacting-with-the-eth-gateway). This does not require any API key.
 - An [Infura.io gateway](https://infura.io/docs/ethereum). This does require a free API key. The network you'll want is "mainnet".
 - A local Ethereum server using [Ganache](https://www.npmjs.com/package/ganache-cli). We already have one set up in [this repository](https://github.com/SyndicateProtocol/Bank-Solidity-Hiring#setup-instructions) that contains the hiring test for Solidity engineers. You can use this by running `npm install -g ganache-cli`, `npm install`, and then `npm start`.
+- The [MetaMask Chrome browser extension](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en), which will automatically provision a gateway for you and make that available to `web3.js`.
 
 The DAI code is hosted by a smart contract located [here](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f). To query it, you will connect to the Ethereum blockchain via a gateway, import the DAI ABI (essentially a file that specifies the available methods) into web3.js, and then use the DAI's [balanceOf](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation#dai-glossary) method with a user's wallet address to query the DAI smart contract.
 
@@ -35,12 +34,12 @@ We know this can be complicated, so we have already put together a complete exam
 
 When you query the contract, you'll note that the value of the balance in the DAI contract is a lot higher than the balance listed on Etherscan. This is because the DAI contract is represented [in 18 decimals](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals) known as `wei`. You'll want to [convert from wei to ether](https://web3js.readthedocs.io/en/v1.3.4/web3-utils.html#fromwei) to get the proper units.
 
-### Primary Task and Optional Additions
+### Primary Task and Optional Additional Tasks
 
-As discussed above, your primary task is to produce an interface that has:
+As discussed above, your **primary task** is to produce an interface that has:
 
 - An input bar where a user can enter in an Ethereum address
-- A display that shows the DAI balance for the entered Ethereum address
+- A display that shows the DAI balance for the entered Ethereum address. This should be displayed in US Dollars, not `wei`.
 
 If you have extra time available, feel free to show off your strengths! You can style the site, cache the most recent input, or implement any of the following features:
 
