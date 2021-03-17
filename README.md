@@ -1,6 +1,6 @@
 # Web3-Full-Stack-Hiring
 
-Hello! If you're reading this, you applied to a Full Stack Engineering role at Syndicate. This is Syndicate's hiring test for Full Stack engineers. (Note: If you have not applied but stumbled across this repository somehow, you are welcome to check out our [job postings](https://www.notion.so/Syndicate-Protocol-Job-Postings-0441e77193a34207b4c86dc7c680b5d8).)
+Hello! If you're reading this, you applied to a Full Stack Engineering role at Syndicate. This is Syndicate's hiring test for Full Stack engineers. (Note: If you have not applied but stumbled across this repository somehow, you are welcome to check out our [job postings](https://www.notion.so/Syndicate-Protocol-Job-Postings-ad09c123121445339d6dfe0da4e3495e).)
 
 When you fork this repository, you should make your fork **private** and share it with [wpapper](https://github.com/wpapper) on Github with an admin role. By forking this repository, you agree to keep the MIT License intact and assign the MIT License to your fork as well.
 
