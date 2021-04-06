@@ -12,11 +12,11 @@ const usdcABI = require("./abi/erc20");
 
 const daiContractAddress = "0x6b175474e89094c44da98b954eedeac495271d0f";
 const daiContract = new web3.eth.Contract(daiABI, daiContractAddress);
-const daiWhale = "0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8";
+const daiWhale = "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643";
 // You can see an example of decimals in use by comparing the $25,039,869 in the
 // contract under the Tokens field on Etherscan (as of writing) to the value
 // below
-// The Etherscan value can be found at https://etherscan.io/address/0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8
+// The Etherscan value can be found at https://etherscan.io/address/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643
 daiWhaleBalance = daiContract.methods.balanceOf(daiWhale).call().then(
   function (value) { console.log("Balance of daiWhale: " + value); }
 );
