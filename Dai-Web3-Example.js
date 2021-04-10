@@ -1,5 +1,3 @@
-// This example is from https://github.com/SyndicateProtocol/Bank-Solidity-Hiring
-// You can find the original file at https://github.com/SyndicateProtocol/Bank-Solidity-Hiring/blob/main/test/Bank.js
 const Bank = artifacts.require("Bank");
 const { expect } = require('chai');
 const { BN, ether, balance } = require('@openzeppelin/test-helpers');
@@ -12,11 +10,11 @@ const usdcABI = require("./abi/erc20");
 
 const daiContractAddress = "0x6b175474e89094c44da98b954eedeac495271d0f";
 const daiContract = new web3.eth.Contract(daiABI, daiContractAddress);
-const daiWhale = "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643";
+const daiWhale = "0xF977814e90dA44bFA03b6295A0616a897441aceC";
 // You can see an example of decimals in use by comparing the $25,039,869 in the
 // contract under the Tokens field on Etherscan (as of writing) to the value
 // below
-// The Etherscan value can be found at https://etherscan.io/address/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643
+// The Etherscan value can be found at https://etherscan.io/address/0xF977814e90dA44bFA03b6295A0616a897441aceC
 daiWhaleBalance = daiContract.methods.balanceOf(daiWhale).call().then(
   function (value) { console.log("Balance of daiWhale: " + value); }
 );
@@ -36,20 +34,20 @@ async function sendEth(fromAccount, toAccount, amount) {
   await web3.eth.sendTransaction({
     from: fromAccount,
     to: toAccount,
-    value: ether(amount.toString()),
+    value: amount,
   });
 
   const ethBalance = await balance.current(daiWhale);
   assert.notEqual(
     ethBalance.toString(),
     0,
-    "ethBalance should not be 0 after sending ETH"
+    "ethBalance should not be 0 after sending ETH",
   );
 
   return ethBalance;
 }
 
-// This function sends DAI to an address to initialize it with 
+// This function sends DAI to an address to initialize it with
 // Based on https://github.com/ryanio/truffle-mint-dai/blob/master/test/dai.js
 async function sendDai(fromAccount, toAccount, amount) {
   await daiContract.methods
@@ -57,16 +55,19 @@ async function sendDai(fromAccount, toAccount, amount) {
     .transfer(toAccount, amount.toString())
     .send({ from: fromAccount, gasLimit: 800000 });
   const daiBalance = await daiContract.methods.balanceOf(toAccount).call();
+  console.log("Dai balance", daiBalance.toString());
   assert.notEqual(
     daiBalance.toString(),
     "0",
-    "daiBalance should not be 0 after sending DAI"
+    "daiBalance should not be 0 after sending DAI",
   );
 
   return daiBalance;
 }
 
 async function setupDai(account, bankAddress, amountDai) {
+  // Initialize daiWhale with ETH
+  sendEth(account, daiWhale, ether(String(1)).toString());
   // Send Dai in units of ether
   amountDai = ether(amountDai.toString()).toString();
   const oldDaiBalance = await daiContract.methods.balanceOf(account).call();
@@ -79,18 +80,18 @@ async function setupDai(account, bankAddress, amountDai) {
   assert.equal(
     sendDaiResult,
     newDaiBalance,
-    `sendDaiResult was ${sendDaiResult} newDaiBalance from contract was ${newDaiBalance}`
+    `sendDaiResult was ${sendDaiResult} newDaiBalance from contract was ${newDaiBalance}`,
   );
 
   assert.equal(
     changedDaiBalance,
     amountDai,
-    `changedDaiBalance was ${changedDaiBalance} amountDai was ${amountDai}`
+    `changedDaiBalance was ${changedDaiBalance} amountDai was ${amountDai}`,
   );
   assert.notEqual(
     0,
     newDaiBalance,
-    "Account newDaiBalance after sending from Dai whale should not be 0"
+    "Account newDaiBalance after sending from Dai whale should not be 0",
   );
 
   // Approve sending the daiBalance from the user to the bank. Note that the
@@ -112,7 +113,7 @@ async function setupDai(account, bankAddress, amountDai) {
   assert.equal(
     daiAllowance,
     amountDai,
-    `daiAllowance was ${daiAllowance} while approval was for ${amountDai}`
+    `daiAllowance was ${daiAllowance} while approval was for ${amountDai}`,
   );
 
   console.log("daiAllowance is " + daiAllowance);
