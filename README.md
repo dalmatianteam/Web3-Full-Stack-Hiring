@@ -25,6 +25,7 @@ As discussed above, your **primary task** is to produce an interface that has:
 
 - An input bar where a user can enter in an Ethereum address
 - A display that shows the DAI balance for the entered Ethereum address. This should be displayed in US Dollars, not `wei`. This is described in more detail in the Helpful Resources section below.
+- Host your app on Heroku or on any other service you have access to and attach a link to the hosted app on your project's README.md file.
 
 If you have extra time available, feel free to show off your strengths! You can style the site, cache the most recent input, or implement any of the following features:
 
