@@ -10,11 +10,7 @@ In this repository, you will create a Web3 integration to look up balances in a 
 
 [Dai](https://community-development.makerdao.com/en/faqs/dai/) is a cryptocurrency known as a stablecoin. It's useful for buying goods and services on cryptocurrency networks -- you use it just like you'd use regular money. Because Dai is a stablecoin, the value of Dai fluctuates very little. In this case, you can assume that 1 DAI is always equal to 1 US Dollar. Various wallets hold balances of DAI. For example, [this wallet](https://etherscan.io/address/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643) may hold 28,837,952 DAI (which, for the purposes of this exercise, we can assume is $28,837,952 US Dollars). (The value of DAI in the wallet will fluctuate, but the underlying principle remains the same.)
 
-Your task is to use React, [the web3.js library](https://web3js.readthedocs.io/en/v1.3.4/) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) of your choosing, and some form of styling (we use Tailwind internally, but we understand that you might not have used it before) to create an interface that can query a user's DAI balance on the Ethereum blockchain. Your interface should have:
-
-- An input bar where a user can enter in an Ethereum address
-- A display that shows the DAI balance for the entered Ethereum address
-- Atleast impressive since you will be working on the user interface
+Your task is to use React, [the web3.js library](https://web3js.readthedocs.io/en/v1.3.4/) or a [React wrapper](https://github.com/NoahZinsmeister/web3-react/tree/v6/docs#web3-reactcore-api-reference) of your choosing, and some form of styling (we use Tailwind internally, but we understand that you might not have used it before) to create an interface that can query a user's DAI balance on the Ethereum blockchain.
 
 We don't have strong preferences on the styling -- if you are familiar with Bootstrap, Tailwind, or various Gatsby starters, feel free to use those. If you don't have familiarity with existing styling or templates, minimal styling is perfectly fine as well.
 
@@ -26,7 +22,6 @@ As discussed above, your **primary task** is to produce an interface that has:
 
 - An input bar where a user can enter in an Ethereum address
 - A display that shows the DAI balance for the entered Ethereum address. This should be displayed in US Dollars, not `wei`. This is described in more detail in the Helpful Resources section below.
-- Atleast impressive since you will be working on the user interface
 - Host your app on Heroku or on any other service you have access to and attach a link to the hosted app on your project's README.md file.
 
 If you have extra time available, feel free to show off your strengths! You can style the site, cache the most recent input, or implement any of the following features:
